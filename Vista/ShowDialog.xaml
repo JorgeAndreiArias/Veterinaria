@@ -1,0 +1,15 @@
+﻿<Window x:Class="Veterinaria.Vista.ShowDialog1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Veterinaria.Vista"
+        mc:Ignorable="d"
+        Title="ShowDialog" Height="163.706" Width="197.143">
+    <Grid Margin="0,0,112,0">
+        <Canvas HorizontalAlignment="Left" Height="133" VerticalAlignment="Top" Width="187" Margin="0,0,-110,0">
+            <Label Content="Cantidad de Accesorios" Height="34" Canvas.Left="31" Canvas.Top="34" Width="135"/>
+            <TextBox Height="29" Canvas.Left="45" TextWrapping="Wrap" Text=""  Canvas.Top="85" Width="100" KeyDown="txtBoxEnter"/>
+        </Canvas>
+    </Grid>
+</Window>
