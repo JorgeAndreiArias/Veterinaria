@@ -13,18 +13,26 @@
             <Label Content="Nombre Cliente" Height="26" Canvas.Left="27" Canvas.Top="71" Width="110"/>
             <Label x:Name="lblCodigo" Content="-" Height="31" Canvas.Left="91" Canvas.Top="40" Width="76"/>
             <TextBox x:Name="txtPrecio" Height="23" Canvas.Left="142" TextWrapping="Wrap" Canvas.Top="75" Width="249"/>
-            <DataGrid x:Name="dtgLista" AutoGenerateColumns="False" Height="116" Canvas.Left="23" Canvas.Top="113" Width="388">
+            <DataGrid x:Name="dtgLista" AutoGenerateColumns="False" Height="116" Canvas.Left="23" Canvas.Top="113" Width="388" SelectionChanged="dtgLista_SelectionChanged">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Codigo" Binding="{Binding IdMedicamento}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Codigo" Binding="{Binding Accesorios.IdAccesorio}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Nombre" Binding="{Binding Accesorios.Nombre}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Precio" Binding="{Binding Precio}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
             <Label Content="Neto a Pagar" Height="26" Canvas.Left="181" Canvas.Top="241" Width="110"/>
             <TextBox x:Name="txtTotalNeto" Height="23" Canvas.Left="305" TextWrapping="Wrap" Canvas.Top="244" Width="106"/>
-            <Button Content="Agregar" Height="23" Canvas.Left="430" Canvas.Top="244" Width="51" Click="Button_Click"/>
+            <Button BorderThickness="0" Background="White" Height="37" Canvas.Left="416" Canvas.Top="235" Width="66" Click="Button_Click">
+                <Image Source="C:\Users\Andrei\source\repos\Veterinaria\Veterinaria\img\icon\cart (1).png"/>
+            </Button>
             <Label x:Name="lblDate" Content="Fecha" Height="25" Canvas.Left="362" Canvas.Top="41" Width="49"/>
+            <Button BorderThickness="0" Background="White" Height="31" Canvas.Left="411" Canvas.Top="136" Width="45" Click="Button_Click_1">
+                <Image Source="C:\Users\Andrei\source\repos\Veterinaria\Veterinaria\img\icon\trash.png"/>
+            </Button>
+            <Button BorderThickness="0" Background="White" Height="31" Canvas.Left="411" Canvas.Top="177" Width="45" Click="Button_Click_2">
+                <Image Source="C:\Users\Andrei\source\repos\Veterinaria\Veterinaria\img\icon\plus.png"/>
+            </Button>
         </Canvas>
     </Grid>
 </UserControl>

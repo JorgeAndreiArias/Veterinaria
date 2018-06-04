@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Veterinaria.Modelo;
 
 namespace Veterinaria.Vista
 {
@@ -26,7 +27,9 @@ namespace Veterinaria.Vista
 
         private void buttonTest_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hello World");
+            Venta venta = new Venta();
+            venta.Cantidad = Int32.Parse(txtNAccesorios.Text);
+
         }
 
         private void txtBoxEnter(object sender, KeyEventArgs e)

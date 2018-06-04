@@ -64,6 +64,7 @@
     <Compile Include="Controlador\ControladorServicio.cs" />
     <Compile Include="Controlador\ControladorTratamiento.cs" />
     <Compile Include="Controlador\ControladorUsuario.cs" />
+    <Compile Include="Controlador\ControladorVenta.cs" />
     <Compile Include="Controlador\ControllerUC.cs" />
     <Compile Include="Modelo\Accesorios.cs" />
     <Compile Include="Modelo\Animal.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Modelo\Servicios.cs" />
     <Compile Include="Modelo\Tratamiento.cs" />
     <Compile Include="Modelo\Usuario.cs" />
+    <Compile Include="Modelo\Venta.cs" />
     <Compile Include="Vista\AccesoriosUC.xaml.cs">
       <DependentUpon>AccesoriosUC.xaml</DependentUpon>
     </Compile>
@@ -173,7 +175,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="img\icon\trash.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="img\icon\delete.png" />
     <Resource Include="img\perfil1.jpg" />
@@ -184,6 +188,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\icon\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\icon\cart %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

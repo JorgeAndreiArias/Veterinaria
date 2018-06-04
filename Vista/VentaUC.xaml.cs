@@ -30,6 +30,26 @@ namespace Veterinaria.Vista
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            string i = dtgLista.RowHeight.ToString();
+            MessageBox.Show(i);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = dtgLista.SelectedItem;
+            if (selectedItem != null)
+            {
+                dtgLista.Items.Remove(selectedItem);
+            }
+        }
+
+        private void dtgLista_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
             ListaAccesorios listaAccesorios = new ListaAccesorios();
             listaAccesorios.Show();
         }
