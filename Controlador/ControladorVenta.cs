@@ -13,40 +13,61 @@ namespace Veterinaria.Controlador
 {
     class ControladorVenta
     {
-        public void InsertSQL(Venta venta, Usuario User, Accesorios acc)
+        public bool insertarVenta(ObservableCollection<Venta> Lista, Usuario usuario)
         {
-            Conexion con = new Conexion();
-            using (SqlCommand cmd = new SqlCommand("sp_AddAccesorio", con.OpenConn()))
+            Conexion conn = new Conexion();
+            var dt = new DataTable();
+            dt.Columns.Add("IdAccesorio", typeof(Int32));
+            dt.Columns.Add("Precio", typeof(float));
+            dt.Columns.Add("Cantidad", typeof(Int32));
+            //DataRow dc = dt.NewRow();
+
+            for (int i = 0; i < Lista.Count; i++)
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                SqlParameter param1 = new SqlParameter("@idAcc", SqlDbType.Int);
-                param1.Value = acc.IdAccesorio;
-                SqlParameter param2 = new SqlParameter("@idUs", SqlDbType.Int);
-                param2.Value = User.IdUsuario;
-                SqlParameter param3 = new SqlParameter("@nCli", SqlDbType.VarChar);
-                param3.Value = venta.NombreCliente;
-                SqlParameter param4 = new SqlParameter("@cant", SqlDbType.Int);
-                param3.Value = venta.Cantidad;
-                SqlParameter param5 = new SqlParameter("@precio", SqlDbType.Float);
-                param3.Value = venta.Precio;
-
-                cmd.Parameters.Add(param1);
-                cmd.Parameters.Add(param2);
-                cmd.Parameters.Add(param3);
-                cmd.Parameters.Add(param4);
-                cmd.Parameters.Add(param5);
-
-                cmd.ExecuteNonQuery();
+                DataRow dc = dt.NewRow();
+                dc[0] = Lista[i].Accesory.IdAccesorio;
+                dc[1] = Lista[i].Accesory.Precio;
+                dc[2] = Lista[i].Cantidad;
+                dt.Rows.Add(dc);
             }
-            con.CloseConn();
+            SqlCommand cmd = new SqlCommand("sp_InsertVentayVentaDetalle", conn.OpenConn());
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandTimeout = 120;
+            var param1 = cmd.Parameters.AddWithValue("@idUs", usuario.IdUsuario);
+            var param2 = cmd.Parameters.AddWithValue("@nCli", Lista[0].NombreCliente);
+            var param3 = cmd.Parameters.AddWithValue("@TVD", dt);
+            param3.SqlDbType = SqlDbType.Structured;
+            param3.TypeName = "dbo.TypeVentaDet";
+
+            cmd.ExecuteNonQuery();
+            conn.CloseConn();
+
+            return true;
+
         }
 
-        public ObservableCollection<Accesorios> GetAllDates()
+        public int ShowIdVenta()
         {
-            ObservableCollection<Accesorios> _list = new ObservableCollection<Accesorios>();
-
-            return _list;
+            Conexion con = new Conexion();
+            Venta an = null;
+            int IdVenta = 0;
+            string sqlCon = "SELECT MAX(IdVenta) AS IdVenta FROM Venta";
+            SqlCommand cmd = new SqlCommand(sqlCon, con.OpenConn());
+            SqlDataReader read = cmd.ExecuteReader();
+            while (read.Read())
+            {
+                try
+                {
+                IdVenta = read.GetInt32(read.GetOrdinal("IdVenta"));
+                }
+                catch (Exception ex)
+                {
+                    IdVenta = 0;
+                }     
+            }
+            con.CloseConn();
+            return IdVenta + 1;
         }
     }
 }

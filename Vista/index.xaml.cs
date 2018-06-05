@@ -21,6 +21,7 @@ namespace Veterinaria.Vista
     /// </summary>
     public partial class index : Window
     {
+        internal Usuario usuario = new Usuario();
         public index()
         {
             InitializeComponent();
@@ -72,7 +73,7 @@ namespace Veterinaria.Vista
         private void Button_Click_7(object sender, RoutedEventArgs e)
         {
             ControllerUC cu = new ControllerUC();
-            cu.CargarUC(grdUC, new VentaUC());
+            cu.CargarUC(grdUC, new VentaUC(Int32.Parse(lblId.Content.ToString())));
         }
     }
 }

@@ -49,6 +49,7 @@
         <Button Content="Cerrar Sesión" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="347,12,0,0" Grid.Row="1" VerticalAlignment="Top" Width="138" Click="Button_Click_5"/>
         <Label Content="Nombre de Usuario:" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="367,89,0,0" Grid.Row="1" VerticalAlignment="Top" Width="118"/>
         <Label x:Name="lblNombre" Grid.Column="1" HorizontalAlignment="Left" Height="31" Margin="511,89,0,0" Grid.Row="1" VerticalAlignment="Top" Width="121"/>
+        <Label x:Name="lblId" Content="" Grid.Column="1" HorizontalAlignment="Left" Height="6" Margin="101,38,0,0" Grid.Row="1" VerticalAlignment="Top" Width="29"/>
 
     </Grid>
 </Window>

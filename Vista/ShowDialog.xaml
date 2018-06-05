@@ -9,7 +9,7 @@
     <Grid Margin="0,0,112,0">
         <Canvas HorizontalAlignment="Left" Height="133" VerticalAlignment="Top" Width="187" Margin="0,0,-110,0">
             <Label Content="Cantidad de Accesorios" Height="34" Canvas.Left="31" Canvas.Top="34" Width="135"/>
-            <TextBox Height="29" Canvas.Left="45" TextWrapping="Wrap" Text=""  Canvas.Top="85" Width="100" KeyDown="txtBoxEnter"/>
+            <TextBox x:Name="txtNAccesorios" Height="29" Canvas.Left="45" TextWrapping="Wrap" Text=""  Canvas.Top="85" Width="100" KeyDown="txtBoxEnter"/>
         </Canvas>
     </Grid>
 </Window>

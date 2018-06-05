@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Veterinaria.Controlador;
+using Veterinaria.Modelo;
 
 namespace Veterinaria.Vista
 {
@@ -20,35 +21,43 @@ namespace Veterinaria.Vista
     /// </summary>
     public partial class ListaAccesorios : Window
     {
+        public ShowDialog1 showDialog1 { get; set; }
+        internal VentaUC ventaUC { get; set; }
+        internal ControladorVenta controladorVenta { get; set; }
+
         public ListaAccesorios()
         {
+            showDialog1 = new ShowDialog1();
             InitializeComponent();
-            Shown();
+            Shown(); 
         }
 
         public void Shown()
         {
             ControladorAccesorio a = new ControladorAccesorio();
-            dtgLista.ItemsSource = a.ShowAllAccesorios();
+            dtgLista1.ItemsSource = a.ShowAllAccesorios();
         }
 
         private void dtgLista_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
             try
             {
-                object item = dtgLista.SelectedItem;
-                string Nombre = (dtgLista.SelectedCells[1].Column.GetCellContent(item) as TextBlock).Text;
-                string Categoria = (dtgLista.SelectedCells[2].Column.GetCellContent(item) as TextBlock).Text;
-                string Precio = (dtgLista.SelectedCells[3].Column.GetCellContent(item) as TextBlock).Text;
-                string Id = (dtgLista.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                Accesorios an = new Accesorios();
+                if (dtgLista1.SelectedItems != null)
+                {
+                    an = (Accesorios)dtgLista1.SelectedItem;
+                    showDialog1.ventaC = this.controladorVenta;
+                    showDialog1.uC = this.ventaUC;
+                    showDialog1._Accesorios = an;
+                    showDialog1.Show();
+                    this.Close();
+                }
             }
-            catch
+            catch(Exception ex)
             {
-
-            }
-
-            ShowDialog1 s = new ShowDialog1();
-            s.Show();
+                throw new Exception("Error", ex);
+            }            
         }
     }
 }

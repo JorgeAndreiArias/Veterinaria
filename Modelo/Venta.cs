@@ -11,7 +11,6 @@ namespace Veterinaria.Modelo
         public Usuario User { get; set; }
         public Accesorios Accesory { get; set; }
         public string NombreCliente { get; set; }
-        public double Precio { get; set; }
         public int Cantidad { get; set; }
     }
 }

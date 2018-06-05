@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Veterinaria.Controlador;
 using Veterinaria.Modelo;
 
 namespace Veterinaria.Vista
@@ -20,16 +21,27 @@ namespace Veterinaria.Vista
     /// </summary>
     public partial class ShowDialog1 : Window
     {
-        public ShowDialog1()
+        internal ControladorVenta ventaC { get; set; }
+        Venta venta { get; set; }
+        internal VentaUC uC { get; set; }
+        internal ListaAccesorios ListaAcces { get; set; }
+        internal Accesorios _Accesorios { get; set; }
+
+    public ShowDialog1()
         {
+            venta = new Venta();
             InitializeComponent();
         }
 
         private void buttonTest_Click(object sender, EventArgs e)
         {
-            Venta venta = new Venta();
+            venta.Accesory = _Accesorios;
             venta.Cantidad = Int32.Parse(txtNAccesorios.Text);
-
+            uC.List.Add(venta);
+            uC.dtgLista.ItemsSource = uC.List;
+            double costo = venta.Accesory.Precio * venta.Cantidad;
+            uC.GetCostoMas(costo);
+            this.Close();
         }
 
         private void txtBoxEnter(object sender, KeyEventArgs e)
@@ -37,7 +49,9 @@ namespace Veterinaria.Vista
             if (e.Key == Key.Enter)
             {
                 buttonTest_Click(this, new EventArgs());
-            }
+             }
         }
+
+
     }
 }

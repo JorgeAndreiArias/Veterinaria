@@ -9,7 +9,7 @@
     <Grid Margin="0,0,2,1">
         <Canvas>
             <Label Content="Catalogo de Accesorios" Height="31" Canvas.Left="23" Canvas.Top="10" Width="367" HorizontalContentAlignment="Center"/>
-            <DataGrid x:Name="dtgLista" AutoGenerateColumns="False" Height="116" Canvas.Left="23" Canvas.Top="46" Width="367" SelectionChanged="dtgLista_SelectionChanged">
+            <DataGrid x:Name="dtgLista1" AutoGenerateColumns="False" Height="116" Canvas.Left="23" Canvas.Top="46" Width="367" SelectionChanged="dtgLista_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Codigo" Binding="{Binding IdAccesorio}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}"></DataGridTextColumn>

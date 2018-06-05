@@ -37,7 +37,9 @@ namespace Veterinaria.Controlador
                 }
                 else
                 {
-                    MessageBox.Show("Nombre de Usuario o Contraseña invalida");
+                    an = new Usuario();
+                    an.IdUsuario = 0;
+                    MessageBox.Show("Contraseña o Nombre de Usuario Invalida", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 conn.CloseConn();
                 return an;

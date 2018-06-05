@@ -44,6 +44,7 @@ namespace Veterinaria
                     index obj = new index();
                     obj.Show();
                     obj.lblNombre.Content = aux.Nombre;
+                    obj.lblId.Content = aux.IdUsuario;
                     if (aux.Perfil == "Administrador")
                     {
 
@@ -54,6 +55,8 @@ namespace Veterinaria
                         obj.Animales.Visibility = Visibility.Collapsed;
                         obj.Accesorios.Visibility = Visibility.Hidden;
                         obj.Accesorios.Visibility = Visibility.Collapsed;
+                        obj.Ventas.Visibility = Visibility.Hidden;
+                        obj.Ventas.Visibility = Visibility.Collapsed;
 
                     }
                     else if (aux.Perfil == "Ventas")
@@ -69,7 +72,7 @@ namespace Veterinaria
                 }
                 else
                 {
-                    MessageBox.Show("No exite este usuario en el sistema");
+
                 }
             }
             else
